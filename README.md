@@ -10,10 +10,10 @@ Note: Also make sure that jQuery is defined.
 ```
 <script type="text/javascript" src="path/to/your/push.js"></script>
 $(window).on('resize', function() {
-  $('yourElement').push('init', {
-			element: '.pushtome',
-			pushAction: 'prependTo',
-			mq: 'screen and (max-width:767px)'
+	$('yourElement').push('init', {
+		element: '.pushtome',
+		pushAction: 'prependTo',
+		mq: 'screen and (max-width:767px)'
 	});
-}
+});
 ```
