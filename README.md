@@ -12,7 +12,7 @@ Just include the `pushme.js` and initialize it for your elements.
 Note: Also make sure that jQuery is defined.
 
 ```
-<script type="text/javascript" src="path/to/your/push.js"></script>
+<script type="text/javascript" src="path/to/your/pushme.js"></script>
 $(window).on('resize', function() {
 	$('yourElement').pushme('init', {
 		element: '.pushtome',
