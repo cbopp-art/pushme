@@ -1,2 +1,7 @@
+2014/10/11 - v2.0.0
+Possibility to enable log message
+Added prerequisite check
+Renamed plugin
+
 2014/03/09 - v1.0.1
 Initial release
