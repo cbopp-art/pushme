@@ -1,3 +1,6 @@
+2014/10/14 - v2.0.1
+Removed needless semicolon
+
 2014/10/11 - v2.0.0
 Possibility to enable log message
 Added prerequisite check
