@@ -6,7 +6,7 @@
  * 					Modernizr v2.7.1 http://modernizr.com
  * @author			Cornel Boppart <cornel@bopp-art.com>
  * @copyright		Author
- * @version			2.0.0 (11/10/2014)
+ * @version			2.0.1 (14/10/2014)
  */
 
 ;(function($) {
