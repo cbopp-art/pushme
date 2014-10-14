@@ -83,7 +83,7 @@
 			if (typeof $(settings.element) !== 'object') {
 				throw new ReferenceError(settings.element + pushme.labels.error.notFound);
 			}
-		},
+		}
 
 	};
 
