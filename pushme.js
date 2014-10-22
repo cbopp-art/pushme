@@ -32,7 +32,7 @@
 			element: '#example',
 			pushAction: 'appendTo',
 			mq: 'screen and (min-width:768px)',
-			log: true
+			log: false
 		},
 
 		/**
