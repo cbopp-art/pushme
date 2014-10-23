@@ -48,7 +48,7 @@
 				return this;
 			}
 		},
-		
+
 		/**
 		 * Pushes the element to somewhere
 		 *
@@ -68,7 +68,7 @@
 				}
 			}
 		},
-		
+
 		/**
 		 * Returns the supported match media
 		 *
