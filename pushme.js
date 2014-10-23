@@ -3,10 +3,9 @@
  * Push elements into specific containers depended on certain media queries
  *
  * @dependencies	jQuery v1.5.0 http://jquery.com
- * 					Modernizr v2.7.1 http://modernizr.com
  * @author			Cornel Boppart <cornel@bopp-art.com>
  * @copyright		Author
- * @version			2.0.1 (14/10/2014)
+ * @version			2.1.0 (23/10/2014)
  */
 
 ;(function($) {
@@ -15,12 +14,11 @@
 
 		labels: {
 			log: {
-				pushed: ' was pushed to '
+				pushed: ' was pushed to ',
+				mediaQueriesNotSupported: 'Your browser does not support media queries.'
 			},
 			error: {
-				notFound: ' could not get found.',
-				notTypeOfObject: 'The element you want to push is not typeof object.',
-				modernizrNotFound: 'Modernizr is not defined.'
+				notFound: ' could not get found.'
 			}
 		},
 
@@ -32,7 +30,7 @@
 			element: '#example',
 			pushAction: 'appendTo',
 			mq: 'screen and (min-width:768px)',
-			log: true
+			log: false
 		},
 
 		/**
@@ -42,13 +40,15 @@
 		 * @return	{void}
 		 */
 		init: function (options) {
-			var $this = $(this),
-				settings = $.extend(pushme.settings, options);
+			var settings = $.extend(pushme.settings, options);
 
-			pushme.checkPrerequisites($this, settings);
-			pushme.pushTo($this, settings);
+            if (pushme.checkPrerequisites(this, settings) === true) {
+                pushme.pushTo(this, settings);
+            } else {
+                return this;
+            }
 		},
-
+		
 		/**
 		 * Pushes the element to somewhere
 		 *
@@ -57,13 +57,25 @@
 		 * @return	{void}
 		 */
 		pushTo: function ($object, settings) {
-			if (Modernizr.mq(settings.mq)) {
+            if (pushme.matchMedia()(settings.mq).matches) {
 				$object[settings.pushAction]($(settings.element));
 
 				if (settings.log === true) {
-					console.log($object.selector + pushme.labels.log.pushed + settings.element + ' (' + settings.pushAction + ')');
+					console.log(
+						$object.selector + pushme.labels.log.pushed + settings.element +
+						' (action: ' + settings.pushAction + ', mq: ' + settings.mq + ')'
+					);
 				}
 			}
+		},
+		
+		/**
+		 * Returns the supported match media
+		 *
+		 * @return	{mixed}	The supported media query or undefined if the browser doesn't support match media
+		 */
+		matchMedia: function() {
+			return window.matchMedia || window.msMatchMedia;
 		},
 
 		/**
@@ -71,19 +83,23 @@
 		 *
 		 * @param	{object}	$object		The object to check if it exists
 		 * @param	{object}	settings	All custom plugin settings (Merged with default settings)
-		 * @return	{void}
+		 * @return	{boolean}
 		 */
 		checkPrerequisites: function ($object, settings) {
-			if (typeof Modernizr === 'undefined') {
-				throw new ReferenceError(pushme.labels.error.modernizrNotFound);
+			if (settings.log === true && (typeof pushme.matchMedia() !== 'function')) {
+				console.log(pushme.labels.log.mediaQueriesNotSupported);
+                return false;
 			}
-			if (typeof $object !== 'object') {
-				throw new ReferenceError(pushme.labels.notTypeOfObject);
+			if ($(settings.element).length < 1) {
+				console.log(settings.element + pushme.labels.error.notFound);
+                return false;
 			}
-			if (typeof $(settings.element) !== 'object') {
-				throw new ReferenceError(settings.element + pushme.labels.error.notFound);
-			}
-		}
+			if ($object.length < 1) {
+				throw new ReferenceError($object.selector + pushme.labels.error.notFound);
+            }
+
+            return true;
+		},
 
 	};
 
