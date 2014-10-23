@@ -37,15 +37,16 @@
 		 * Initializes the plugin
 		 *
 		 * @param	{object}	options	The custom plugin options (Not yet merged with default settings)
-		 * @return	{void}
+		 * @return	{boolean}	True if operation proceeded, else false
 		 */
 		init: function (options) {
 			var settings = $.extend(pushme.settings, options);
 
 			if (pushme.checkPrerequisites(this, settings) === true) {
 				pushme.pushTo(this, settings);
+				return true;
 			} else {
-				return this;
+				return false;
 			}
 		},
 
@@ -86,12 +87,16 @@
 		 * @return	{boolean}
 		 */
 		checkPrerequisites: function ($object, settings) {
-			if (settings.log === true && (typeof pushme.matchMedia() !== 'function')) {
-				console.log(pushme.labels.log.mediaQueriesNotSupported);
+			if (typeof pushme.matchMedia() !== 'function') {
+				if (settings.log === true) {
+					console.log(pushme.labels.log.mediaQueriesNotSupported);
+				}
 				return false;
 			}
 			if ($(settings.element).length < 1) {
-				console.log(settings.element + pushme.labels.error.notFound);
+				if (settings.log === true) {
+					console.log(settings.element + pushme.labels.error.notFound);
+				}
 				return false;
 			}
 			if ($object.length < 1) {
@@ -115,4 +120,4 @@
 		}
 	};
 
-}(jQuery));
+})(jQuery);
