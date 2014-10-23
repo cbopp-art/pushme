@@ -37,7 +37,7 @@
 		 * Initializes the plugin
 		 *
 		 * @param	{object}	options	The custom plugin options (Not yet merged with default settings)
-		 * @return	{boolean}	True if operation proceeded, else false
+		 * @return	{boolean}			True if operation proceeded, else false
 		 */
 		init: function (options) {
 			var settings = $.extend(pushme.settings, options);
@@ -84,7 +84,7 @@
 		 *
 		 * @param	{object}	$object		The object to check if it exists
 		 * @param	{object}	settings	All custom plugin settings (Merged with default settings)
-		 * @return	{boolean}
+		 * @return	{boolean}				True if all checks were passed, else false
 		 */
 		checkPrerequisites: function ($object, settings) {
 			if (typeof pushme.matchMedia() !== 'function') {
