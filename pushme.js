@@ -42,11 +42,11 @@
 		init: function (options) {
 			var settings = $.extend(pushme.settings, options);
 
-            if (pushme.checkPrerequisites(this, settings) === true) {
-                pushme.pushTo(this, settings);
-            } else {
-                return this;
-            }
+			if (pushme.checkPrerequisites(this, settings) === true) {
+				pushme.pushTo(this, settings);
+			} else {
+				return this;
+			}
 		},
 		
 		/**
@@ -57,7 +57,7 @@
 		 * @return	{void}
 		 */
 		pushTo: function ($object, settings) {
-            if (pushme.matchMedia()(settings.mq).matches) {
+			if (pushme.matchMedia()(settings.mq).matches) {
 				$object[settings.pushAction]($(settings.element));
 
 				if (settings.log === true) {
@@ -88,18 +88,18 @@
 		checkPrerequisites: function ($object, settings) {
 			if (settings.log === true && (typeof pushme.matchMedia() !== 'function')) {
 				console.log(pushme.labels.log.mediaQueriesNotSupported);
-                return false;
+				return false;
 			}
 			if ($(settings.element).length < 1) {
 				console.log(settings.element + pushme.labels.error.notFound);
-                return false;
+				return false;
 			}
 			if ($object.length < 1) {
 				throw new ReferenceError($object.selector + pushme.labels.error.notFound);
-            }
+			}
 
-            return true;
-		},
+			return true;
+		}
 
 	};
 
