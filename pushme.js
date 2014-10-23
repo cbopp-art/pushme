@@ -37,17 +37,18 @@
 		 * Initializes the plugin
 		 *
 		 * @param	{object}	options	The custom plugin options (Not yet merged with default settings)
-		 * @return	{boolean}			True if operation proceeded, else false
+		 * @return	{object}	this	The current element itself
 		 */
 		init: function (options) {
 			var settings = $.extend(pushme.settings, options);
 
-			if (pushme.checkPrerequisites(this, settings) === true) {
-				pushme.pushTo(this, settings);
-				return true;
-			} else {
-				return false;
-			}
+			return this.each(function() {
+				var $this = $(this);
+
+				if (pushme.checkPrerequisites($this, settings) === true) {
+					pushme.pushTo($this, settings);
+				}
+			})(settings);
 		},
 
 		/**
