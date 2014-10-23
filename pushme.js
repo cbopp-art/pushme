@@ -8,7 +8,7 @@
  * @version			2.1.0 (23/10/2014)
  */
 
-;(function($) {
+;(function ($) {
 
 	var pushme = {
 
@@ -42,7 +42,7 @@
 		init: function (options) {
 			var settings = $.extend(pushme.settings, options);
 
-			return this.each(function() {
+			return this.each(function () {
 				var $this = $(this);
 
 				if (pushme.checkPrerequisites($this, settings) === true) {
@@ -76,7 +76,7 @@
 		 *
 		 * @return	{mixed}	The supported media query or undefined if the browser doesn't support match media
 		 */
-		matchMedia: function() {
+		matchMedia: function () {
 			return window.matchMedia || window.msMatchMedia;
 		},
 
