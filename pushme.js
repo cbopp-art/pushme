@@ -48,7 +48,7 @@
 				if (pushme.checkPrerequisites($this, settings) === true) {
 					pushme.pushTo($this, settings);
 				}
-			})(settings);
+			});
 		},
 
 		/**
