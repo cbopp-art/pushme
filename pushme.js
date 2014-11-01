@@ -5,7 +5,7 @@
  * @dependencies	jQuery v1.5.0 http://jquery.com
  * @author			Cornel Boppart <cornel@bopp-art.com>
  * @copyright		Author
- * @version			2.1.0 (23/10/2014)
+ * @version			2.1.0 (01/11/2014)
  */
 
 ;(function ($) {
@@ -63,7 +63,7 @@
 				$object[settings.pushAction]($(settings.element));
 
 				if (settings.log === true) {
-					console.log(
+					console.info(
 						$object.selector + pushme.labels.log.pushed + settings.element +
 						' (action: ' + settings.pushAction + ', mq: ' + settings.mq + ')'
 					);
@@ -90,18 +90,21 @@
 		checkPrerequisites: function ($object, settings) {
 			if (typeof pushme.matchMedia() !== 'function') {
 				if (settings.log === true) {
-					console.log(pushme.labels.log.mediaQueriesNotSupported);
+					console.info(pushme.labels.log.mediaQueriesNotSupported);
 				}
 				return false;
 			}
 			if ($(settings.element).length < 1) {
 				if (settings.log === true) {
-					console.log(settings.element + pushme.labels.error.notFound);
+					console.error(settings.element + pushme.labels.error.notFound);
 				}
 				return false;
 			}
 			if ($object.length < 1) {
-				throw new ReferenceError($object.selector + pushme.labels.error.notFound);
+				if (settings.log === true) {
+					console.error($object.selector + pushme.labels.error.notFound);
+				}
+				return false;
 			}
 
 			return true;
