@@ -1,0 +1,29 @@
+﻿{
+  "name": "pushme",
+  "description": "Push elements into specific containers depended on certain media queries.",
+  "keywords": [
+    "jquery-plugin",
+    "responsive",
+	"media queries",
+    "breakpoint"
+  ],
+  "version": "2.1.0",
+  "dependencies": {
+    "jquery": ">=1.5.0"
+  },
+  "author": "Cornel Boppart (https://github.com/cbopp-art)",
+  "license": "GPL-2.0+",
+  "main": "pushme.js",
+  "homepage": "http://cornel.bopp-art.com/pushme/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cbopp-art/pushme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cbopp-art/pushme/issues",
+    "email": "cornel@bopp-art.com"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
