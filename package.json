@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "pushme",
   "description": "Push elements into specific containers depended on certain media queries.",
   "keywords": [
@@ -7,14 +7,14 @@
 	"media queries",
     "breakpoint"
   ],
-  "version": "2.1.0",
+  "version": "2.1.1",
   "dependencies": {
     "jquery": ">=1.5.0"
   },
   "author": "Cornel Boppart (https://github.com/cbopp-art)",
   "license": "GPL-2.0+",
   "main": "pushme.js",
-  "homepage": "http://cornel.bopp-art.com/",
+  "homepage": "http://cbopp-art.github.io/pushme/",
   "repository": {
     "type": "git",
     "url": "https://github.com/cbopp-art/pushme.git"

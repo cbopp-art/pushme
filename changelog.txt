@@ -1,3 +1,6 @@
+2016/01/07 - v2.1.1
+Added package.json file with metadata
+
 2014/11/01 - v2.1.0
 Different log status
 Optimized prerequisite checks
